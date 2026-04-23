@@ -1,8 +1,10 @@
 // Base URL for the Cloudflare Worker proxy.
-// During local development, point at the upstream APIs directly via the
-// dev-proxy config in vite.config.js (or set VITE_WORKER_URL in .env.local).
-// In production, set VITE_WORKER_URL to your deployed Worker URL.
-export const WORKER_BASE = import.meta.env.VITE_WORKER_URL || ''
+// Hardcoded here because Cloudflare static-asset Workers don't support
+// build-time env vars. Override via VITE_WORKER_URL in .env.local for
+// local development if you want to use the Vite dev-proxy instead.
+export const WORKER_BASE =
+  import.meta.env.VITE_WORKER_URL ??
+  'https://wrc-conditions-proxy.rowsmartweather.workers.dev'
 
 export const FLAG_CONFIG = {
   GREEN:  { label: 'Safe Conditions',       bg: 'bg-green-500',   text: 'text-white', border: 'border-green-600',  requirements: 'PFDs encouraged for club singles and pairs when water temp is below 60°F.' },
