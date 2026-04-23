@@ -1,0 +1,10 @@
+name = "wrc-conditions-proxy"
+main = "src/index.js"
+compatibility_date = "2024-04-01"
+
+# Cache API requires Workers Paid plan; if on Free tier, remove the cache calls
+# from src/index.js or set cache_ttl = 0
+
+[vars]
+# Allowed origins — add your deployed Cloudflare Pages URL and any dev origins
+ALLOWED_ORIGINS = "https://wrc-conditions.pages.dev,http://localhost:5173"
